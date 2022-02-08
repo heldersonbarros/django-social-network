@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% endblock %}
+
+{% block title %}
+Community | {{community.title}}  
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% include '_side_nav.html' %}
+
+        <div class="card">
+            <div class="background">
+                <img class="rounded-image" src="{{community.image.url}}" alt="">
+                <a class="username" href="{% url 'communities:community_page' community.id %}">{{community.title}}</a>
+                <span class="community-followers" id="community-followers-{{community.id}}">{{community.participants.count}} Participants</span>
+            </div>
+
+            <span class="community-description">{{community.description}}</span>
+
+            <div class="community-buttons">
+                <a class="community-post-create" href="{% url 'communities:create_post_community' community.id%}">Create Post</a>
+                {% if request.user == community.owner %}
+                <a href="{% url 'communities:community_update' community.id %}" class="community-update">Update</a>
+                {% elif request.user in community.participants.all %}
+                <button class="btn-dark js-join-button" community_id="{{community.id}}">Leave</button>
+                {% else %}
+                <button class="btn-light js-join-button" community_id="{{community.id}}">Join</button>
+                {% endif %}    
+            </div>
+        </div>
+
+        {% if post_list %}
+        <div class="posts" id="posts">
+            {% include '_flash_messages.html' %}
+                {% for post in post_list %}
+                    {% include '_post.html' %}
+            {% endfor %}
+        </div>
+        {% else %}
+            <div class="welcome">
+                {% include '_flash_messages.html' %}
+                <h2>Nothing to see here</h2>
+                <p><a href="{% url 'communities:create_post_community' community.id%}">Create a new post</a></p>
+            </div>
+        {% endif %}
+
+        <script src="{% static 'scripts/async_requests.js' %}"></script>
+        <script src="{% static 'scripts/infinite_scroll.js' %}"></script>
+
+{% endblock %}

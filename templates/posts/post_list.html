@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% endblock %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% include '_side_nav.html' %}
+
+        {% if post_list %}
+        <div class="posts" id="posts">
+
+            {% include '_flash_messages.html' %}
+
+            {% for post in post_list %}
+            {% include '_post.html' %}
+            {% endfor %}
+        </div>
+        {% else %}
+            {% if title == 'Homepage' %}
+            <div class="welcome">
+                <div>
+                    <h2>Welcome</h2>
+                    <p>Find some posts to like <a href="{% url 'posts:explore' %}">Explore</a></p>
+                </div>
+            </div>
+            {% else %}
+            <div class="welcome">
+                <h2>Nothing to see here</h2>
+                <p><a href="{% url 'posts:create_post' %}">Create a new post</a></p>
+            </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <script src="{% static 'scripts/async_requests.js' %}"></script>
+    <script src="{% static 'scripts/infinite_scroll.js' %}"></script>
+
+{% endblock %}

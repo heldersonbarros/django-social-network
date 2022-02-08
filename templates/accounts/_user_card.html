@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="background">
+        <img class="rounded-image" src="{{user.image.url}}" alt="">
+        <a class="username" href="">{{user.username}}</a>
+    </div>
+
+    <div class="infos">
+        <a href="{% url 'accounts:following_page' user.username%}" class="info-text">
+            <h1>{{user.following.count}}</h1>
+            <h1 class="info-description">Following</h1>
+        </a>
+
+        <a href="{% url 'accounts:followers_page' user.username%}" class="info-text">
+            <h1 href="{% url 'accounts:followers_page' user.username%}" id="followers-count">{{user.followers.count}}</h1>
+            <h1 class="info-description">Followers</h1>
+        </a>
+    </div>
+    {% if request.user == user %}
+    <a href="{% url 'accounts:update' %}" class="follow-button">Edit profile</a>
+    {% elif request.user in user.followers.all %}
+    <button user_id="{{user.id}}" class="unfollow-button js-follow-button">Unfollow</button>
+    {% else %}
+    <button user_id="{{user.id}}" class="follow-button js-follow-button">Follow</button>
+    {% endif %}
+</div>

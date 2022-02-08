@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar{
+    background-color: white;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 4vw;
+    border-bottom: 1px solid lightgray;
+    font-size: 14px;
+    top: 0;
+    width: 100%;
+    height: 9vh;
+    z-index: 1;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+}
+
+h3{
+    display: block;
+    margin: 20px 0px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.right-nav {
+    display: flex;
+    justify-content: right;
+}
+
+.links{
+    display: flex;
+    justify-content:right;
+    align-items:center;
+}
+
+.logo-search{
+    width: 50%;
+}
+
+.logo-search form{
+    display: inline-block;
+    width: 80%;
+}
+
+.search-input{
+    color: black;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 8px;
+    margin-left: 8px;
+    width: 60%;
+    outline: none;
+}
+
+.search{
+    display: none !important;
+}
+
+.profile-image {
+    position: relative;
+    margin-left: 15px;
+    padding: 0;
+    width: 35px;
+}
+
+.profile-image img{
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.profile-image:hover{
+    cursor: pointer;
+}
+
+.dynamic-link{
+    display: none;
+}
+
+.dropdown {
+    position: absolute;
+    background-color: white;
+    right: 5%;
+    top: 120%;
+    width: 40vh;
+    padding-right: 30px;
+    border: 1px solid lightgray;
+    display: none;
+    flex-direction: column;
+}
+
+.dropdown:hover {
+    display: flex;
+}
+
+.dropdown li{
+    width: 100%;
+    background-color: white;
+}
+
+.dropdown li:last-child {
+    border-top: 1px solid lightgray;
+}
+
+.dropdown li a{
+    display: block;
+    padding: 15px;
+    width: 100%;
+}
+
+.dropdown li:hover{
+    display: inline-block;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.burger {
+    display: none;
+}
+
+.burger div{
+    background-color: black;
+    width: 25px;
+    height: 5px;
+    margin: 4px;
+    cursor: pointer;
+}
+
+
+.side-nav{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.side-nav li{
+    padding: 3px;
+    margin: 5px;
+}
+
+.menu-hidden-bar{
+    display: none;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.back-icon {
+    display: none !important;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px){
+    body{
+        overflow-x: hidden;
+    }
+
+    .burger {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .logo-search a{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    .link{
+        display: none;
+    }
+    
+    .nav-active{
+        display: flex !important;
+        transform: translateX(0%) !important;
+    }
+
+    .side-nav {
+        display: none !important;
+    }
+
+    .logo-search form{
+        display: none;
+    }
+
+    .menu-hidden-bar{
+        display: none;
+        position: fixed;
+        background-color: black;
+        z-index: 1;
+        color: white;
+        top: 9vh;
+        left: 0;
+        height: 91vh;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        transform: translateX(100%);
+    }
+
+    .menu-hidden-bar li a{
+        color: white;
+    }
+
+    .dynamic-link{
+        display: inline-block;
+    }
+
+    .back-icon-active {
+        display: inline-block !important;
+    }
+
+    .profile-image-active{
+        display: none;
+    }
+
+    .search{
+        display: block !important;
+        cursor: pointer;
+    }
+
+    .search-active{
+        display: flex !important;
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+        justify-content: center;
+        align-items: center;
+        height: 9vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+    }
+}

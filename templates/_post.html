@@ -1,0 +1,28 @@
+<div class="post">
+    <div class="title-div">
+        <a class="post-title" href="{% url 'posts:detail' post.id%}">{{post.title}}</a>
+        {% if post.user == request.user %}
+        <a href="{% url 'posts:delete' post.id %}" class='delete-button'>Delete</a>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'posts:detail' post.id%}">
+        <img src="{{post.image.url}}" alt="">
+    </a>
+    
+    <ul>
+        <li><a href="{% url 'accounts:user_page' post.user.username%}" class="post-username" style="color: black;">{{post.user.username}}</a></li>
+        {% if post.community %}
+        <li><a href="{% url 'communities:community_page' post.community.id%}">{{post.community.title}}</a></li>
+        {% endif %}
+    </ul>
+
+    <div class="post-buttons">
+        {% if post.is_liked %}
+        <a class="liked js-like-button " post_id="{{post.id}}" id="like{{post.id}}">{{post.like_set.count}}</a>
+        {% else %}
+        <a class="like-button js-like-button" post_id="{{post.id}}" id="like{{post.id}}">{{post.like_set.count}}</a>
+        {% endif %}
+        <a class="post-button" href="{% url 'posts:detail' post.id%}#comments">Comments</a>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'styles/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/fontawesome.all.min.css' %}">
+    <script src="{% static 'scripts/fontawesome.all.min.js' %}"></script>
+    {% block style %}
+
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-search">
+            {% if title != 'login' and title != 'register' %}
+            <div id="burger" class="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            {% endif %}
+            <a href="{% url 'posts:index' %}">LOGO</a>
+            <form action="{% url 'posts:explore' %}" id="search-form">
+                <i class="back-icon fas fa-arrow-left fa-lg" id="back-icon"></i>
+                <input class="search-input" type="text" name="q" id="" placeholder="Search...">
+                <button class="btn-light" type="submit">Search</button>
+            </form>
+        </div>
+
+        <nav class="right-nav">
+            <ul class="links">
+                {% if request.user.is_anonymous %}
+                    <li><a class="link" href="{% url 'accounts:login' %}">Log in</a></li>
+                    <li><a href="{% url 'accounts:register' %}" class="link btn-light">Create Account</a></li>
+                    {% if title == 'login' %}
+                    <li class="dynamic-link"><a href="{% url 'accounts:register' %}">Register</a></li>
+                    {% else %}
+                    <li class="dynamic-link"><a href="{% url 'accounts:login' %}">Log in</a></li>
+                    {% endif %}
+                {% else %}
+                    <i class="search fas fa-search fa-lg" id="search"></i>
+                    <li><a href="{% url 'posts:create_post' %}" class="link btn-light">Create Post</a></li>   
+                    <li class="profile-image" id="profile-image">
+                        <img src="{{request.user.image.url}}" id="image" alt="">
+                        <ul class="dropdown" id="dropdown">
+                            <li>
+                                <a href="{% url 'accounts:user_page' request.user.username %}">
+                                    <b>{{request.user.username}}</b>
+                                </a>
+                            </li>
+                            <li><a href="{% url 'communities:user_communities' %}">My Communities</a></li>
+                            <li><a href="{% url 'posts:create_post' %}">Create Post</a></li>
+                            <li><a href="{% url 'communities:create_community' %}">Create Community</a></li>
+                            <li><a href="{% url 'accounts:update' %}">Settings</a></li>
+                            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                        </ul>
+                    </li>  
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <ul class="menu-hidden-bar">
+        <li><a href="{% url 'posts:index' %}">Home</a></li>
+        <li><a href="{% url 'posts:explore' %}">Explore</a></li>
+        <li><a href="{% url 'communities:community_all' %}">Communities</a></li>
+        <li><a href="">About</a></li>
+    </ul>
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% if title != 'login' and title != 'sign up' %}
+    <script src="{% static 'scripts/menu.js' %}"></script>
+    {% endif %}
+</body>

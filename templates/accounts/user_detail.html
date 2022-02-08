@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% endblock %}
+
+{% block title %}
+User | {{user.username}}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        {% include '_side_nav.html' %}
+ 
+        {% include 'accounts/_user_card.html' %}
+        
+        {% if post_list %}
+        <div class="posts" id="posts">
+            {% include '_flash_messages.html' %}
+                {% for post in post_list %}
+                    {% include '_post.html' %}
+                {% endfor %}
+        </div>
+        {% else %}
+            <div class="welcome">
+                <h2>Nothing to see here</h2>
+                <p>No Posts Yet</p>
+            </div>
+        {% endif %}
+
+        <script src="{% static 'scripts/async_requests.js' %}"></script>
+        <script src="{% static 'scripts/infinite_scroll.js' %}"></script>
+
+    </div>
+
+{% endblock %}

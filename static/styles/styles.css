@@ -1,0 +1,463 @@
+.btn-light, .follow-button, .community-post-create, .community-update{
+    background-color: white;
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.btn-light{
+    color: black;
+    padding: 8px;
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+.btn-light:hover, .follow-button:hover, .community-post-create:hover, .community-update:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-dark, .unfollow-button{
+    background-color: black;
+    color: white ;
+    border: 1px solid black;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-dark{
+    background-color: black;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.btn-dark:hover, .unfollow-button:hover, .comment-button:hover{
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+}
+
+input:focus{
+    color: black;
+    border: 1px solid black;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.container, .card-container{
+    position: absolute;
+    padding: 2vh 4vw;
+    top: 9vh;
+    width: 100%;
+}
+
+.side-nav{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.side-nav li{
+    padding: 3px;
+    margin: 5px;
+}
+
+.posts{
+    width: fit-content;
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.title-div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;    
+}
+
+.delete-button{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 14px;
+    color: darkred;
+    border: 1px solid darkred;
+}
+
+.delete-button:hover{
+    background-color: darkred;
+    color: white;
+}
+
+.post-title{
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 0px;
+    word-break: break-all;
+}
+
+.post-title:hover, .comment-username:hover{
+    text-decoration: underline;
+}
+
+.post ul li a{
+    text-decoration: underline;
+}
+
+.post-buttons{
+    display: flex;
+    gap: 5px;
+    padding: 10px 0px;
+    margin-top: 10px;
+}
+
+.post-buttons a{
+    font-size: 14px;
+}
+
+.like-button, .liked{
+    display: inline-block;
+    text-align: center;
+    width: 7%;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.liked {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.username {
+    display: block;
+    text-decoration: underline;
+    color: gray;
+}
+
+.post {
+    margin-bottom: 10px;
+    width: fit-content;
+    width: 100%;
+}
+
+
+.post ul li{
+    padding: 5px 5px 0px 0px;
+}
+
+.post ul li:hover{
+    text-decoration: underline; 
+}
+
+.card{
+    position: relative;
+    border: 1px solid lightgray;
+    height: 40vh;
+    z-index: 0;
+}
+
+.community-followers{
+    color: white;
+    font-size: 13px;
+    margin: 0;
+}
+
+.community-buttons{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.community-buttons button{
+    width: 40%;
+    border-radius: 0;
+}
+
+.community-post-create{
+    width: 50%;
+    font-size: 13px;
+    text-align: center;
+}
+
+.community-update{
+    width: 40%;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 0;
+}
+
+.community-create-post:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.follow-button{
+    display: inline-block;
+    position: absolute;
+    color: black;
+    width: 100%;
+    font-size: 13px;
+    text-align: center;
+    bottom: 0;
+}
+
+.unfollow-button{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    padding: 8px;
+    bottom: 0;
+}
+
+.center-text{
+    text-align: center;
+}
+
+.community-followers{
+    margin: auto;
+}
+.background{
+    background-color: black;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.infos{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.data-joined{
+    font-size: 12px;
+    color: lightgray;
+    display: block;
+    margin: 20px 10px 0px 10px;
+    font-size: 12px;
+}
+
+.community-description{
+    display: block;
+    font-size: 13px;
+    margin: 5px;
+    word-break: break-all;
+}
+
+.rounded-image{
+    display: block;
+    width: 25%;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.background img{
+    margin: auto;
+}
+
+.info-text{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 50%;
+    margin: 0;
+    padding: 10px;
+}
+
+.info-text h1{
+    text-align: center;
+    font-size: 15px;
+}
+
+.username {
+    margin: 5px;
+    color: white;
+}
+
+.info-description{
+    color: gray;
+}
+
+h2{
+    margin: 20px 0px ;
+}
+
+textarea{
+    width: 100%;
+}
+
+.comments form{
+    padding-bottom: 10px;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+}
+
+.comments form textarea{
+    outline: none;
+}
+
+.comment-button{
+    display: block;
+    margin: 10px 0;
+    width: 30%;
+}
+
+.comment{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    border-bottom: 1px solid lightgray;
+    width: 600px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.comment > img{
+    display: block;
+    width: 60%;
+}
+
+.comment > p{
+    margin: 0;
+}
+
+.comment-username{
+    font-weight: bold;
+}
+
+.column-2{
+    grid-column: 2;
+}
+
+.comment-body p {
+    word-break: break-all;
+}
+
+.comment-input:focus{
+    color: black;
+    border: 1px solid black;
+}
+
+.comments > ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.messages{
+    display: flex;
+    list-style: none;
+    width: 100%;
+}
+
+.message-success {
+    display: block;
+    background-color: darkgreen;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.next, .post-button, .like-button{
+    background-color: white;
+    color: black;
+    border: 1px solid lightgray;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.next {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    width: 40%;
+}
+
+.next:hover, .post-button:hover, .like-button:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.page-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.center-button{
+    margin: auto 0;
+}
+
+.center-div{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.justify-content-center{
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.welcome{
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.welcome a{
+    text-decoration: underline;
+}
+
+.welcome .messages{
+    max-width: 600px;
+}
+
+@media screen and (max-width: 768px){
+    .container{
+        display: block;
+        width: 100%;
+    }
+
+    .posts{
+        width: 100%;
+    }
+
+    .post img{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .card{
+        height: 60vh;
+        width: 100%;
+        margin-bottom: 2%;
+    }
+
+    .grid-container{
+        display: block;
+    }
+
+    .grid-container .card{
+        width: 100%;
+    }
+}

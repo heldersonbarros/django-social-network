@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Delete Post | {{post.title}}
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p class="delete-text">Are you sure you want to delete this post?</p>
+            
+            <div class="post-delete-buttons">
+                <a class="cancel-btn" href="">Cancel</a>
+                <input class="delete-button" id="submit-button" type="submit" value="Delete">  
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

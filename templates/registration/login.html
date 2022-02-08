@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="form-container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form}}
+            <a href="{% url 'accounts:password_reset' %}">Forgot your password?</a>
+            <input class="form-btn" type="submit" value="Log in">
+        </form>
+    </div>
+
+{% endblock %}

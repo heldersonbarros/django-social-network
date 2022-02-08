@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Create Community
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'styles/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <form action="" method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{form}}
+
+            <input class="form-btn" id="submit-button" type="submit" value="Create Community">
+        </form>
+    </div>
+
+{% endblock %}

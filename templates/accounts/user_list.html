@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% endblock %}
+
+{% block title %}
+{{user.username}} | {{title}}
+{% endblock %}
+
+{% block content %}
+    <div class="card-container">
+        <h2>{{user.username}}</h2>
+        <h3>{{title}}</h3>
+        <div class="grid-container">
+            {% for user in user_list %}
+            {% include 'accounts/_user_card.html' %}
+            {% endfor %}
+        </div>
+        
+        {% if page_obj.has_previous and page_obj.has_next %}
+        <div class="page-buttons">
+            <a href="{{request.path}}?page={{page_obj.previous_page_number}}" class="next">Previous Page</a>
+            <a href="{{request.path}}?page={{page_obj.next_page_number}}" class="next">Next Page</a>
+        </div>
+        {% elif page_obj.has_previous %}
+        <div class="page-buttons justify-content-center">
+            <a href="{{request.path}}?page={{page_obj.previous_page_number}}" class="next center-button">Previous Page</a>
+        </div>
+        {% elif page_obj.has_next %} 
+        <div class="page-buttons justify-content-center">
+            <a href="{{request.path}}?page={{page_obj.next_page_number}}" class="next center-button">Next Page</a>
+        </div>
+        {% endif %}    
+    </div>
+
+    <script src="{% static 'scripts/async_requests.js' %}"></script>
+{% endblock %}

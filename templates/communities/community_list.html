@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% endblock %}
+
+{% block title %}
+All communities
+{% endblock %}
+
+{% block content %}
+    <div class="card-container">
+        <h2>All communities</h2>
+        <div class="grid-container">
+            {% for community in community_list %}
+            <div class="card">
+                <div class="background">
+                    <img class="rounded-image" src="http://127.0.0.1:8000/static/images/profile_image.png" alt="">
+                    <a class="username" href="{% url 'communities:community_page' community.id%}">{{community.title}}</a>
+                    <span class="community-followers" id="community-followers-{{community.id}}">{{community.participants.count}} Participants</span>
+                </div>
+            
+                <span class="community-description">{{community.description}}</span>
+            
+                {% if request.user == community.owner %}
+                <a href="{% url 'communities:community_update' community.id%}" class="follow-button">Update</a>
+                {% elif request.user in community.participants.all %}
+                <button community_id="{{community.id}}" class="unfollow-button js-join-button">Leave</button>
+                {% else %}
+                <button community_id="{{community.id}}" class="follow-button js-join-button">Join</button>
+                {% endif %}
+                
+            </div>
+            {% empty %}
+            <p>Create a new community <a href="{% url 'communities:create_community' %}">here</a></p>
+            {% endfor %}
+        </div>
+        
+        {% if page_obj.has_previous and page_obj.has_next %}
+        <div class="page-buttons">
+            <a href="{% url 'communities:community_all' %}?page={{page_obj.previous_page_number}}" class="next">Previous Page</a>
+            <a href="{% url 'communities:community_all' %}?page={{page_obj.next_page_number}}" class="next">Next Page</a>
+        </div>
+        {% elif page_obj.has_previous %}
+        <div class="page-buttons justify-content-center">
+            <a href="{% url 'communities:community_all' %}?page={{page_obj.previous_page_number}}" class="next center-button">Previous Page</a>
+        </div>
+        {% elif page_obj.has_next %} 
+        <div class="page-buttons justify-content-center">
+            <a href="{% url 'communities:community_all' %}?page={{page_obj.next_page_number}}" class="next center-button">Next Page</a>
+        </div>
+        {% endif %}    
+    </div>
+
+    <script src="{% static 'scripts/async_requests.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% endblock %}
+
+{% block title %}
+{{post.title}} | {{post.user.username}}  
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="container">
+        {% include '_side_nav.html' %}
+
+        <div class="posts">
+            {% include '_post.html' %}
+
+            <h2>Comentários</h2>
+            <div class="comments">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form.text}}
+                    <input class="btn-dark comment-button" type="submit" value="Post comment">
+                </form>
+
+                {% if post.comment_set.all %}
+                <ul id = "comments">
+                {% for comment in comments %}
+                
+                    <li>
+                        <div class="comment">
+                            <img class="rounded-image" src="{{comment.user.image.url}}" alt="">
+                            <div class="comment-body">
+                                <a class="comment-username" href="{% url 'accounts:user_page' comment.user.username %}">{{comment.user.username}}</a>
+                                <p>{{comment.text}}</p>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+    
+    <script src="{% static 'scripts/load_comments.js' %}"></script>
+    <script src="{% static 'scripts/async_requests.js' %}"></script>
+
+{% endblock %}
