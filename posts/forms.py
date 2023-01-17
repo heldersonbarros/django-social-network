@@ -28,7 +28,7 @@ class PostForm(forms.ModelForm):
             raise ValidationError("This field is required.")
         else:
             width, height = get_image_dimensions(image)
-
+            '''
             if width != 600:
                raise ValidationError("Width should be 600px")
             if height < 300 or height > 600:
@@ -36,6 +36,7 @@ class PostForm(forms.ModelForm):
             
             if image.size > 1024*1024:
                 raise ValidationError("Image file too large > 1mb")
+            '''
         return image
 
 class CommentForm(forms.ModelForm):

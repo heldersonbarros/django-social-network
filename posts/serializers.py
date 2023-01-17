@@ -15,6 +15,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_liked(self, obj):
+        #user =  self.context['request'].user mais fácil
         if self.context['user'] != None:
             return obj.like_set.filter(user=self.context['user']).exists()
         return False

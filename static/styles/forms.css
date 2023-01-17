@@ -1,37 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+body{
+    --high-emphasis-text: black;
+    --medium-emphasis-text: lightgray;
+    --body-color: white;
+    --primary-color: #4A47A3;
+    --component-color: white;
+    --border-color: lightgray;
+    --input-color: rgba(255,255,255,.08);
+    --dropdown-color: white;
+    --dropdown-text-color: black;
+
+    background-color: var(--body-color);
+    color: var(--text-high-emphasis);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dark {
+    --high-emphasis-text: rgba(255, 255, 255, .87);
+    --medium-emphasis-text: rgba(255, 255, 255, .60);
+    --body-color: #121212;
+    --primary-color: #4A47A3;
+    --component-color: rgba(255, 255, 255, 0.08);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --input-color: rgba(255,255,255,.08);
+    --dropdown-color: rgb(37, 37, 37);
+    --dropdown-text-color: white;
+}
+
+h3 {
+    color: var(--high-emphasis-text);
+}
+
+.form-title{
+    text-align: center;
+    margin-bottom: 15%;
+}
+
+.form-title p {
+    color: medium
+}
+
 .form-input{
-    color: black;
-    border: 1px solid lightgray;
+    display: inline-block;
+    background-color: var(--input-color);
+    color: var(--high-emphasis-text);
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 8px;
-    margin-left: 8px;
-    width: 70%;
+    width: 100%;
     outline: none;
+    margin: 20px 0;
+}
+
+.form-input:focus{
+    border: 1px solid var(--primary-color) !important;
 }
 
 .btn-light, .form-btn, .cancel-btn, .form-info a{
     padding: 8px;
     border-radius: 5px;
-    border: 1px solid black;
     cursor: pointer;
 }
 
 .btn-light{
-    background-color: white;
-    color: black;
+    background-color: var(--primary-color);
+    color: rgba(255, 255, 255, .87);
+    border: 1px solid var(--primary-color);
     margin-left: 15px;
 }
 
-.btn-light:hover, .cancel-btn:hover{
-    background-color: black;
-    color: white;
-}
-
 input[type="text"]:focus, input[type="file"]:focus{
-    color: black;
+    color: var(--high-emphasis-text);
     border: 1px solid black;
 }
 
 .form-container{
+    color: var(--high-emphasis-text);
     position: relative;
     display: flex;
     height: 100vh;
@@ -41,12 +86,19 @@ input[type="text"]:focus, input[type="file"]:focus{
 }
 
 .form-container form, .register-container form{
-    width: 70%;
+    width: 30%;
+}
+
+.form-container form a{
+    color: var(--high-emphasis-text);
 }
 
 .register-container{
+    background-color: #121212;
+    color: var(--high-emphasis-text);
     position: absolute;
-    top: 13%;
+    padding: 2vh;
+    top: 9vh;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -54,14 +106,18 @@ input[type="text"]:focus, input[type="file"]:focus{
 
 .errorlist, .message-success{
     display: block;
-    color: white;
+    color: rgba(255, 255, 255, .87);
     padding: 20px;
     width: 100%;
     margin: 10px 0px;
 }
 
 .errorlist{
-    background-color: darkred;
+    background-color: #B00020;
+}
+
+.errorlist li{
+    border-radius: 5px;
 }
 
 .messages{
@@ -71,34 +127,30 @@ input[type="text"]:focus, input[type="file"]:focus{
 }
 
 .message-success{
-    background-color: darkgreen;
+    background-color: green;
 }
 
 .form-btn{
-    background-color: black;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px;
     color: white;
     width: 100%;
     margin: 20px 0;
 }
 
-.form-btn:hover{
-    background-color: white;
-    color: black;
-    cursor: pointer;
-}
-
-.form-input {
-    display: inline-block;
-    width: 100%;
-    margin: 20px 0;
+.form-btn:hover, .btn-light:hover{
+    text-decoration: underline;
 }
 
 .settings-container{
+    background-color: var(--body-color);
     display: grid;
     grid-template-columns: 1fr 3fr;
     position: absolute;
     padding: 2vh 4vw;
     top: 9vh;
+    height: 100%;
     width: 100%;
 }
 
@@ -108,7 +160,8 @@ input[type="text"]:focus, input[type="file"]:focus{
 
 .settings-form {
     position: relative;
-    border: 1px solid lightgray;
+    color: var(--high-emphasis-text);
+    border: 1px solid var(--border-color);
     padding: 60px 30px;
 }
 
@@ -121,12 +174,20 @@ input[type="text"]:focus, input[type="file"]:focus{
     padding: 10px;
 }
 
+.settings-side-bar li:hover{
+    text-decoration: underline;
+}
+
+.settings-side-bar li span {
+    margin-left: 2%;
+}
+
 .nav-desabled{
-    border-left: 5px solid white;
+    border-left: 5px solid var(--body-color);
 }
 
 .nav-active{
-    border-left: 5px solid black;
+    border-left: 5px solid var(--primary-color);
 }
 
 .helptext ul{
@@ -159,9 +220,11 @@ input[type="text"]:focus, input[type="file"]:focus{
 }
 
 .select-field{
+    background-color: var(--body-color);
+    color: var(--high-emphasis-text);
     display: none;
     height: 40px;
-    border: 1px solid lightgray;
+    border: 1px solid var(--border-color);
     width: 100%;
     margin-bottom: 2vh;
     outline: none;
@@ -179,25 +242,25 @@ input[type="text"]:focus, input[type="file"]:focus{
 }
 
 .delete-button{
-    background-color: white;
-    color: darkred;
+    background-color: #B00020;
+    color: rgba(255, 255, 255, .87);
     border-radius: 5px;
     padding: 8px 10px;
     margin-bottom: 5px;
     font-size: 14px;
-    border: 1px solid darkred;
+    border: 1px solid #B00020;
 }
 
-.delete-button:hover{
-    background-color: darkred;
-    color: white;
+.delete-button:hover, .cancel-btn:hover{
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .cancel-btn{
-    background-color: white;
+    background-color: rgba(255, 255, 255, .16);
     font-size: 14px;
-    color: black;
+    color: var(--high-emphasis-text);
+    border: 1px solid var(--border-color);
 }
 
 
@@ -212,5 +275,9 @@ input[type="text"]:focus, input[type="file"]:focus{
 
     .select-field{
         display: block;
+    }
+
+    .form-container form, .register-container form{
+        width: 90%;
     }
 }

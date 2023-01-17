@@ -16,6 +16,7 @@ from datetime import date, timedelta
 from . serializers import PostSerializer, CommentSerializer
 from . models import Post, Comment, Like
 from . forms import PostForm, CommentForm
+from accounts.models import User
 
 class PaginationMixin:
     def render_to_response(self, context, **response_kwargs):
@@ -55,6 +56,13 @@ class PostList(LoginRequiredMixin, LikeMixin, PaginationMixin, ListView):
 
         return super().get_queryset(queryset)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        following = self.request.user.following.all()
+        print(following)
+        context["follow_recommendation"] = User.objects.exclude(id__in=following).exclude(id=self.request.user.id)[:3]
+        return context
+
 class Explore(LoginRequiredMixin, LikeMixin, PaginationMixin, ListView):
     model = Post
     paginate_by = 15
@@ -71,6 +79,12 @@ class Explore(LoginRequiredMixin, LikeMixin, PaginationMixin, ListView):
             queryset = queryset.filter(created_at__range=[startdate, enddate]).annotate(count=Count("like")).order_by('-count').exclude(user=self.request.user)
 
         return super().get_queryset(queryset.order_by("-created_at"))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        following = self.request.user.following.all()
+        context["follow_recommendation"] = User.objects.exclude(id__in=following).exclude(id=self.request.user.id)[:3]
+        return context
             
 class PostDetail(LoginRequiredMixin, LikeMixin, FormMixin, DetailView):
     model = Post

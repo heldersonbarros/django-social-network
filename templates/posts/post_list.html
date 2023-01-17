@@ -38,6 +38,54 @@
             </div>
             {% endif %}
         {% endif %}
+
+        <div>
+            <div class="follow-recommendation">
+                <h3>Who to follow</h3>
+                <ul>
+                {% for user in follow_recommendation %}
+                    <li>
+                        <a href="{% url 'accounts:user_page' user.username %}" class="follow-item">
+                            <img src="{{user.image.url}}" alt="">
+                            <div>
+                                {{user.username}}
+                            </div>
+                            <div class="follow-container">
+                                <span class="btn-light">Follow</span>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+
+            <div class="topics">
+                <h3>Topics</h3>
+                <ul>
+                    <li><a href="">Arts</a></li>
+                    <li><a href="">Business</a> </li>
+                    <li><a href="">Calculus</a> </li>
+                    <li><a href="">Education</a></li>
+                    <li><a href="">Environment</a></li>
+                    <li><a href="">Food</a></li>
+                    <li><a href="">Gaming</a></li>
+                    <li><a href="">Health</a></li>
+                    <li><a href="">Humor</a></li>
+                    <li><a href="">Law</a></li>
+                    <li><a href="">Movies</a></li>
+                    <li><a href="">Music</a></li>
+                    <li><a href="">Politics</a></li>
+                    <li><a href="">Philosophy</a></li>
+                    <li><a href="">Religion</a></li>
+                    <li><a href="">Science</a></li>
+                    <li><a href="">Sports</a></li>
+                    <li><a href="">Television</a></li>
+                    <li><a href="">Tecnology</a></li>
+                    <li><a href="">Travel</a></li>
+                </ul>
+            </div>
+        </div>
+
     </div>
 
     <script src="{% static 'scripts/async_requests.js' %}"></script>

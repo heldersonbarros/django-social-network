@@ -39,10 +39,11 @@ async function like_post(button){
     
 	const response_json = await response.json();
 
-	button.innerText = `${response_json.count}`;
-
-	button.classList.toggle('like-button');
-	button.classList.toggle("liked");
+	if(response_json["added"] == true){
+		button.innerHTML = `<i class="fa-solid fa-heart fa-lg"></i> ${response_json.count}`
+	} else{
+		button.innerHTML = `<i class="fa-regular fa-heart fa-lg"></i> ${response_json.count}`
+	}
 }
 
 async function join_community(button){

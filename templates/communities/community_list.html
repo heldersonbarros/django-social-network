@@ -17,7 +17,7 @@ All communities
             {% for community in community_list %}
             <div class="card">
                 <div class="background">
-                    <img class="rounded-image" src="http://127.0.0.1:8000/static/images/profile_image.png" alt="">
+                    <img class="rounded-image" src="{{community.image.url}}" alt="">
                     <a class="username" href="{% url 'communities:community_page' community.id%}">{{community.title}}</a>
                     <span class="community-followers" id="community-followers-{{community.id}}">{{community.participants.count}} Participants</span>
                 </div>

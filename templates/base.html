@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{% static 'styles/nav.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/fontawesome.all.min.css' %}">
-    <script src="{% static 'scripts/fontawesome.all.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {% block style %}
 
     {% endblock %}
@@ -27,13 +26,17 @@
             {% endif %}
             <a href="{% url 'posts:index' %}">LOGO</a>
             <form action="{% url 'posts:explore' %}" id="search-form">
-                <i class="back-icon fas fa-arrow-left fa-lg" id="back-icon"></i>
+                <button id="back-icon" class="back-icon">
+                    <i class="fa-solid fa-arrow-left fa-lg"></i>
+                </button>
                 <input class="search-input" type="text" name="q" id="" placeholder="Search...">
-                <button class="btn-light" type="submit">Search</button>
+                <button type="submit">
+                    <i class="fas fa-search fa-lg" id="search"></i>
+                </button>
             </form>
         </div>
 
-        <nav class="right-nav">
+        <nav class="right-nav" id="right-nav">
             <ul class="links">
                 {% if request.user.is_anonymous %}
                     <li><a class="link" href="{% url 'accounts:login' %}">Log in</a></li>
@@ -44,6 +47,7 @@
                     <li class="dynamic-link"><a href="{% url 'accounts:login' %}">Log in</a></li>
                     {% endif %}
                 {% else %}
+                    
                     <i class="search fas fa-search fa-lg" id="search"></i>
                     <li><a href="{% url 'posts:create_post' %}" class="link btn-light">Create Post</a></li>   
                     <li class="profile-image" id="profile-image">
@@ -57,6 +61,15 @@
                             <li><a href="{% url 'communities:user_communities' %}">My Communities</a></li>
                             <li><a href="{% url 'posts:create_post' %}">Create Post</a></li>
                             <li><a href="{% url 'communities:create_community' %}">Create Community</a></li>
+                            <li>
+                                <div class="dark-mode-action">
+                                <span>Dark mode</span>
+                                <label class="switch">
+                                    <input type="checkbox" id="theme-toggle">
+                                    <span class="slider"></span>
+                                </label>
+                                </div>
+                             </li>
                             <li><a href="{% url 'accounts:update' %}">Settings</a></li>
                             <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
                         </ul>

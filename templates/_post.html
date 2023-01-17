@@ -1,28 +1,41 @@
 <div class="post">
+    <div class="user-info">
+        <div>
+            {% if post.community %}
+                <img class="user-post-image" src="{{post.community.image.url}}" alt="">
+                <span>
+                    <a href="{% url 'communities:community_page' post.community.id%}" class="from">{{post.community.title}}</a>
+                    Posted by
+                    <a href="{% url 'accounts:user_page' post.user.username%}" class="user-community"> {{post.user.username}}</a></span>
+            {% else %}
+                <img class="user-post-image" src="{{post.user.image.url}}" alt="">
+                <a href="{% url 'accounts:user_page' post.user.username%}" class="from">{{post.user.username}}</a> 
+            {% endif %}
+        </div>
+        
+        {% if post.user == request.user %}
+        <a href="{% url 'posts:delete' post.id %}" class='delete-button delete-post'>Delete</a>
+        {% endif %}
+    </div>
+    
     <div class="title-div">
         <a class="post-title" href="{% url 'posts:detail' post.id%}">{{post.title}}</a>
-        {% if post.user == request.user %}
-        <a href="{% url 'posts:delete' post.id %}" class='delete-button'>Delete</a>
-        {% endif %}
     </div>
 
     <a href="{% url 'posts:detail' post.id%}">
         <img src="{{post.image.url}}" alt="">
     </a>
-    
-    <ul>
-        <li><a href="{% url 'accounts:user_page' post.user.username%}" class="post-username" style="color: black;">{{post.user.username}}</a></li>
-        {% if post.community %}
-        <li><a href="{% url 'communities:community_page' post.community.id%}">{{post.community.title}}</a></li>
-        {% endif %}
-    </ul>
 
     <div class="post-buttons">
         {% if post.is_liked %}
-        <a class="liked js-like-button " post_id="{{post.id}}" id="like{{post.id}}">{{post.like_set.count}}</a>
+        <a class="post-button js-like-button" post_id="{{post.id}}" id="like{{post.id}}">
+            <i class="fa-solid fa-heart fa-lg center"></i> {{post.like_set.count}}
+        </a>
         {% else %}
-        <a class="like-button js-like-button" post_id="{{post.id}}" id="like{{post.id}}">{{post.like_set.count}}</a>
+        <a class="post-button js-like-button" post_id="{{post.id}}" id="like{{post.id}}">
+            <i class="fa-regular fa-heart fa-lg center"></i> {{post.like_set.count}}
+        </a>
         {% endif %}
-        <a class="post-button" href="{% url 'posts:detail' post.id%}#comments">Comments</a>
+        <a class="post-button" href="{% url 'posts:detail' post.id%}#comments"><i class="fa-regular fa-comment fa-lg"></i> {{post.comment_set.count}}</a>
     </div>
 </div>

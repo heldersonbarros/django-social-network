@@ -14,12 +14,13 @@ O projeto consiste em uma rede social desenvolvida em Django
 
 ### Desktop
 
-![Homepage Desktop](screenshots/homepage.png)
-![Profile Desktop](screenshots/profile.png)
+![Homepage Dark mode Desktop](screenshots/homepage_dark.png)
+![Home Light mode Desktop](screenshots/homepage_light.png)
+![Profile Dark Desktop](screenshots/profile_dark.png)
 
 ### Mobile
 
-![Homepage Mobile](screenshots/homepage_mobile.png)     ![Profile Mobile](screenshots/profile_mobile.png)
+![Profile Mobile](screenshots/profile_mobile.png)
 
 ## Tecnologias utilizadas
 

@@ -99,6 +99,7 @@ class CommunityDetail(LoginRequiredMixin, LikeMixin, PaginationMixin, ListView):
     def get_object(self):
        return get_object_or_404(Community, id = self.kwargs["id"])
 
+    # se eu posso acessar o comunity.post_set por que filtrar ? community__id=self.kwargs["id"] redundancia?
     def get_queryset(self):
         self.community = self.get_object()
         queryset = self.community.post_set.filter(community__id=self.kwargs["id"]).order_by("-created_at")

@@ -24,20 +24,21 @@
                 <form action="" method="POST">
                     {% csrf_token %}
                     {{form.text}}
-                    <input class="btn-dark comment-button" type="submit" value="Post comment">
+                    <input class="btn-light comment-button" type="submit" value="Post comment">
                 </form>
 
                 {% if post.comment_set.all %}
                 <ul id = "comments">
                 {% for comment in comments %}
-                
                     <li>
                         <div class="comment">
-                            <img class="rounded-image" src="{{comment.user.image.url}}" alt="">
-                            <div class="comment-body">
-                                <a class="comment-username" href="{% url 'accounts:user_page' comment.user.username %}">{{comment.user.username}}</a>
-                                <p>{{comment.text}}</p>
+                            <div class="user-info">
+                                <div>
+                                    <img class="user-post-image" src="{{comment.user.image.url}}" alt="">
+                                    <a href="{% url 'accounts:user_page' comment.user.username%}">{{comment.user.username}}</a> 
+                                </div>
                             </div>
+                            <p>{{comment.text}}</p>
                         </div>
                     </li>
                 {% endfor %}

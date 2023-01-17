@@ -8,7 +8,7 @@ class Community(models.Model):
     created_at = models.DateTimeField(auto_now_add= True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="owner")
     participants = models.ManyToManyField(User, blank=True)
-    image = models.ImageField(upload_to='community/', validators=[validate_image])
+    image = models.ImageField(upload_to='community/', validators=[])
 
     def __str__(self):
         return f"{self.title}"

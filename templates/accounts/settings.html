@@ -14,17 +14,17 @@ Settings | {% if profile %}Profile{% else %}Authentication{% endif %}
     <div class="settings-container">
         <ul class="settings-side-bar">
             {% if form_type == "update" %}
-            <li class="nav-active"><a href="{% url 'accounts:update' %}" >Profile</a></li>
-            <li class="nav-desabled"><a href="{% url 'accounts:change_password' %}">Authentication</a></li>
-            <li class="nav-desabled"><a href="{% url 'accounts:delete_account'%}">Delete account</a></li>
+            <li class="nav-active"><a href="{% url 'accounts:update' %}" ><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+            <li class="nav-desabled"><a href="{% url 'accounts:change_password' %}"><i class="fa-solid fa-lock"></i><span>Authentication</span></a></li>
+            <li class="nav-desabled"><a href="{% url 'accounts:delete_account'%}"><i class="fa-solid fa-user-xmark"></i><span>Delete account</span></a></li>
             {% elif form_type == "password_change" %}
-            <li class="nav-desabled"><a href="{% url 'accounts:update' %}" >Profile</a></li>
-            <li class="nav-active"><a href="{% url 'accounts:change_password' %}">Authentication</a></li>
-            <li class="nav-desabled"><a href="{% url 'accounts:delete_account'%}">Delete account</a></li>
+            <li class="nav-desabled"><a href="{% url 'accounts:update' %}"><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+            <li class="nav-active"><a href="{% url 'accounts:change_password' %}"><i class="fa-solid fa-lock"></i><span>Authentication</span></a></li>
+            <li class="nav-desabled"><a href="{% url 'accounts:delete_account'%}"><i class="fa-solid fa-user-xmark"></i><span>Delete account</span></a></li>
             {% else %}
-            <li class="nav-desabled"><a href="{% url 'accounts:update' %}" >Profile</a></li>
-            <li class="nav-desabled"><a href="{% url 'accounts:change_password' %}">Authentication</a></li>
-            <li class="nav-active"><a href="{% url 'accounts:delete_account'%}">Delete account</a></li>
+            <li class="nav-desabled"><a href="{% url 'accounts:update' %}"><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+            <li class="nav-desabled"><a href="{% url 'accounts:change_password' %}"><i class="fa-solid fa-lock"></i><span>Authentication</span></a></li>
+            <li class="nav-active"><a href="{% url 'accounts:delete_account'%}"><i class="fa-solid fa-user-xmark"></i><span>Delete account</span></a></li>
             {% endif %}
         </ul>
 
@@ -45,7 +45,7 @@ Settings | {% if profile %}Profile{% else %}Authentication{% endif %}
         </select>
 
         <div class="settings-content">
-            <form class="settings-form" action="" method="POST">
+            <form class="settings-form" action="" method="POST" enctype="multipart/form-data">
                 {% if messages %}
 
                 <ul class="messages">
